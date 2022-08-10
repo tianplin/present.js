@@ -7,9 +7,14 @@
     <title>Document</title>
   </head>
   <body>
-    <script src="./present.min.js"></script>
-    <script>
+    <!-- <script src="./present.min.js"></script> -->
+    <!-- <script>
       presentjs()
+    </script> -->
+    <script type="module">
+      import { presentjs } from './src/main.js'
+      import { Presentjs } from './src/present.js'
+      presentjs(new Presentjs())
     </script>
   </body>
 </html>
