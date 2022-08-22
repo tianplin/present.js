@@ -10,7 +10,6 @@ export function wrapper(date, instance) {
     $offset: instance.$offset, //时区偏移量
   })
 }
-
 //解析 区域 并添加值
 export function parseLocale(preset, object, isLocal) {
   //parset 预制 object 对象 isLocal 是否是本地日期
@@ -42,6 +41,7 @@ export function parseLocale(preset, object, isLocal) {
 
 //解析日期
 export function parseDate(config) {
+  debugger
   const { date, utc } = config
   if (date === null) return new Date(NaN) //日期为null
   if (isUndefined(date)) return new Date()

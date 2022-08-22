@@ -4,6 +4,8 @@ import { locales } from '../locale/index.js'
 
 export class Presentjs {
   constructor(config) {
+    console.log(config)
+
     //解析区域
     this.$L = utils.parseLocale(config.locale, null, true)
     this.parse(config)
@@ -17,14 +19,14 @@ export class Presentjs {
 
   init() {
     const { $p } = this
-    this.$y = $d.getFullYear() //年份
-    this.$M = $d.getMonth() //月份
-    this.$D = $d.getDate() //日期
-    this.$W = $d.getDay() //星期
-    this.$H = $d.getHours() //小时
-    this.$m = $d.getMinutes() //分钟
-    this.$s = $d.getSeconds() //秒
-    this.$ms = $d.getMilliseconds() //毫秒
+    this.$y = $p.getFullYear() //年份
+    this.$M = $p.getMonth() //月份
+    this.$D = $p.getDate() //日期
+    this.$W = $p.getDay() //星期
+    this.$H = $p.getHours() //小时
+    this.$m = $p.getMinutes() //分钟
+    this.$s = $p.getSeconds() //秒
+    this.$ms = $p.getMilliseconds() //毫秒
   }
   clone() {
     return utils.wrapper(new Date(this.$p), this)
