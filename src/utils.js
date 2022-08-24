@@ -41,7 +41,7 @@ export function parseLocale(preset, object, isLocal) {
 
 //解析日期
 export function parseDate(config) {
-  debugger
+  console.log('解析日期')
   const { date, utc } = config
   if (date === null) return new Date(NaN) //日期为null
   if (isUndefined(date)) return new Date()
@@ -50,7 +50,7 @@ export function parseDate(config) {
     const d = date.match(REGEX_PARSE)
     if (d) {
       const m = d[2] - 1 || 0
-      const ms = (d[7] || 0).substring(0, 3)
+      const ms = (d[7] || '0').substring(0, 3)
       if (utc) {
         return new Date(Date.UTC(d[1], m, d[3] || 1, d[4] || 0, d[5] || 0, d[6] || 0, ms))
       }

@@ -5,18 +5,18 @@ import { locales } from '../locale/index.js'
 export class Presentjs {
   constructor(config) {
     console.log(config)
-
     //解析区域
     this.$L = utils.parseLocale(config.locale, null, true)
     this.parse(config)
   }
-
+  // 解析
   parse(config) {
-    this.$d = utils.parseDate(config) //日期
+    debugger
+    this.$p = utils.parseDate(config) //日期
     this.$x = config.x || {} //时区
     this.init() //初始化
   }
-
+  // init date object
   init() {
     const { $p } = this
     this.$y = $p.getFullYear() //年份
