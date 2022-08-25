@@ -1,6 +1,6 @@
 import { presentjs } from './main.js'
 import { REGEX_PARSE } from './constant.js'
-import { locales, locale } from '../locale/index.js'
+import { globalLocales, globalLocale } from '../locale/index.js'
 
 export function wrapper(date, instance) {
   presentjs(date, {
@@ -13,16 +13,17 @@ export function wrapper(date, instance) {
 //解析 区域 并添加值
 export function parseLocale(preset, object, isLocal) {
   //parset 预制 object 对象 isLocal 是否是本地日期
+  debugger
   let lc
-  if (!preset) return locales
+  if (!preset) return globalLocale
   if (typeof preset === 'string') {
     const presetLower = preset.toLowerCase() //转换为小写
-    if (locales[presetLower]) {
+    if (globalLocales[presetLower]) {
       lc = presetLower
     }
 
     if (object) {
-      locales[presetLower] = object
+      globalLocales[presetLower] = object
     }
     const presetSplit = preset.split('-') //分割
 
@@ -31,12 +32,12 @@ export function parseLocale(preset, object, isLocal) {
     }
   } else {
     const { name } = preset //获取名称
-    locales[name] = preset
+    globalLocales[name] = preset
   }
   if (!isLocal && lc) {
-    locale = lc
+    globalLocale = lc
   }
-  return lc || (!isLocal && locale)
+  return lc || (!isLocal && globalLocale)
 }
 
 //解析日期
@@ -67,14 +68,14 @@ export function isUndefined(value) {
 
 export function padStart(string, length, pad) {
   const s = String(string)
-  if (!s || S.length >= length) return string
-  return `${Array(length + 1 - S.length).join(pad)}${string}`
+  if (!s || s.length >= length) return string
+  return `${Array(length + 1 - s.length).join(pad)}${string}`
 }
 
 export function padZoneString(instance) {
   const negMinutes = -instance.utcOffset() //获取时区偏移量
   const minutes = Math.abs(negMinutes) // 获取绝对值
   const hourOffset = Math.floor(minutes / 60) // 小时偏移量
-  const minuteOffset = minute % 60 // 分钟偏移量
+  const minuteOffset = minutes % 60 // 分钟偏移量
   return `${negMinutes <= 0 ? '+' : '-'}${padStart(hourOffset, 2, '0')}:${padStart(minuteOffset, 2, '0')}` // 返回时区字符串
 }

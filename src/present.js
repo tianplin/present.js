@@ -1,19 +1,41 @@
+/**
+ * @file Present.js  class file
+ */
 import * as utils from './utils.js'
+import { globalLocales } from '../locale/index.js'
+import { INVALID_DATE_STRING } from './constant.js'
 
-import { locales } from '../locale/index.js'
-
+/**
+ * @class Present class
+ */
 export class Presentjs {
+  /**
+   * @description  locale language
+   * @member { String }  locale
+   * @memberof Presentjs
+   */
+  $L
+  /**
+   * @description  date
+   * @member { Date }  date
+   * @memberof Presentjs
+   */
+  $P
+
+  /**
+   * @description: constructor
+   * @param { Object } config
+   * @Constructor
+   */
   constructor(config) {
-    console.log(config)
-    //解析区域
     this.$L = utils.parseLocale(config.locale, null, true)
+    console.log(this.$L)
     this.parse(config)
   }
   // 解析
   parse(config) {
-    debugger
-    this.$p = utils.parseDate(config) //日期
-    this.$x = config.x || {} //时区
+    this.$p = utils.parseDate(config)
+    this.$x = config.x || {} //
     this.init() //初始化
   }
   // init date object
@@ -35,10 +57,16 @@ export class Presentjs {
     return !(this.$p.toString() === INVALID_DATE_STRING)
   }
   $locale() {
-    // 获取当前语言
-    return locales[this.$L]
+    return globalLocales[this.$L]
   }
+  // 获取utc偏移量
+  utcOffset() {
+    // 获取时区偏移量
+    return -Math.round(this.$p.getTimezoneOffset() / 15) * 15
+  }
+
   format(formatStr) {
+    debugger
     console.log(formatStr)
     const locale = this.$locale()
     if (!this.isValid()) return locale.invalidDate || INVALID_DATE_STRING

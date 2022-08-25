@@ -1,13 +1,26 @@
-import { Presentjs } from './present.js'
+import { Presentjs } from './Present.js'
 
-const isPresentjs = (p) => p instanceof Presentjs //是否是Presentjs实例
+/**
+ * @function isPresentJs
+ * @description: judge whether the parameter is a Presentjs object
+ * @param {*} p
+ * @returns {Boolean} true or false
+ */
+const isPresentjs = (p) => p instanceof Presentjs
 
+/**
+ * @function presentjs
+ * @description: instance of Presentjs
+ * @param {*} data any data for init
+ * @param {*} c  config
+ * @returns {Presentjs} new Presentjs instance
+ */
 export const presentjs = function (data, c) {
   if (isPresentjs(data)) {
-    return data.clone() //如果是presentjs对象，则返回一个新的presentjs对象
+    return data.clone() // if data is Presentjs instance, return clone
   }
   const config = typeof c == 'object' ? c : {}
-  config.date = data //设置日期
-  config.args = arguments //设置参数
-  return new Presentjs(config) //返回一个新的presentjs对象
+  config.date = data
+  config.args = arguments // save arguments
+  return new Presentjs(config)
 }
