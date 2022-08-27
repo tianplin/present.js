@@ -2,8 +2,14 @@ import { presentjs } from './main.js'
 import { REGEX_PARSE } from './constant.js'
 import { globalLocales, globalLocale } from '../locale/index.js'
 
+/**
+ * @description 获取当前时间
+ * @returns {Presentjs} 返回当前时间
+ * @params
+ *
+ */
 export function wrapper(date, instance) {
-  presentjs(date, {
+  return presentjs(date, {
     local: instance.$L, //语言
     utc: instance.$u, //utc时间
     x: instance.$x, //时区
