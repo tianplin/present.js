@@ -1,134 +1,134 @@
 /**
- * @file constant.js  constant file
+ * @file constant.js  常量文件
  *
  */
 
 /**
- * @description  60 seconds
+ * @description  60 秒
  * @type {number}
  */
 export const SECOND_PER_MINUTE = 60 //
 
 /**
- * @description  1000 milliseconds
+ * @description  1000 毫秒
  * @type {number}
  */
 export const MILLISECOND_PER_SECOND = 1e3
 
 /**
- * @description  1000 milliseconds * 60 seconds = 6000 milliseconds
+ * @description  1000 毫秒 * 60 秒 = 6000  毫秒
  * @type {number}
  */
 export const MILLISECOND_PER_MINUTE = MILLISECOND_PER_SECOND * SECOND_PER_MINUTE
 
 /**
- * @description  1000 milliseconds * 60 seconds * 60 minutes = 3600000 milliseconds
+ * @description  1000 毫秒 * 60 秒 * 60 分钟 = 3600000 毫秒
  * @type {number}
  */
 export const MILLISECOND_PER_HOUR = MILLISECOND_PER_MINUTE * 60
 
 /**
- *  @decription 1000 milliseconds * 60 seconds * 60 minutes * 24 hours = 86400000 milliseconds
+ *  @decription 1000 毫秒 * 60 秒 * 60 分钟 * 24 小时 = 86400000 毫秒
  *  @type {number}
  */
-export const MILLISECOND_PER_DAY = MILLISECOND_PER_HOUR * 24 //86400000 1000ms * 60 * 60 * 24 等于1天
+export const MILLISECOND_PER_DAY = MILLISECOND_PER_HOUR * 24
 
 /**
- * @description  1000 milliseconds * 60 seconds * 60 minutes * 24 hours * 7 days = 604800000 milliseconds
+ * @description  1000 毫秒 * 60 秒 * 60 分钟 * 24 小时 * 7 天 = 604800000 毫秒
  * @type {number}
  */
 export const MILLISECOND_PER_WEEK = MILLISECOND_PER_DAY * 7
 
 /**
- * @description  1000 milliseconds * 60 seconds * 60 minutes * 24 hours * 30 days = 2592000000 milliseconds
+ * @description  1000 毫秒 * 60 秒 * 60 分钟 * 24 小时 * 30 天 = 2592000000 毫秒
  * @type {number}
  */
 export const MILLISECOND_PER_MONTH = MILLISECOND_PER_DAY * 30
 
 /**
- * @description  1000 milliseconds * 60 seconds * 60 minutes * 24 hours * 365 days = 31536000000 milliseconds
+ * @description  1000 毫秒 * 60 秒 * 60 分钟 * 24 小时 * 365 天 = 31536000000 毫秒
  */
 export const MILLISECOND_PER_YEAR = MILLISECOND_PER_DAY * 365
 
 /**
- * @description millisecond ms
+ * @description 毫秒
  * @type {String}
  */
 export const MILLISECOND = 'millisecond'
 
 /**
- * @description second s
+ * @description 秒
  * @type {String}
  */
 export const SECOND = 'second'
 
 /**
- * @description minute m
+ * @description 分钟
  * @type {String}
  */
 export const MINUTE = 'minute'
 
 /**
- * @descrition hour h
+ * @descrition 小时
  * @type {String}
  */
 export const HOUR = 'hour'
 
 /**
- * @description day d
+ * @description 一天
  * @type {String}
  */
 export const DAY = 'day'
 
 /**
- * @decription week w
+ * @decription 周
  * @type {String}
  */
 export const WEEK = 'week'
 
 /**
- * @description month M
+ * @description 月份
  * @type {String}
  */
 export const MONTH = 'month'
 
 /**
- * @description quarter Q
+ * @description 季度
  * @type {String}
  */
 export const QUARTER = 'quarter'
 
 /**
- * @description year y
+ * @description 年份
  * @type {String}
  */
 export const YEAR = 'year'
 
 /**
- * @description date time
+ * @description 日期
  * @type {String}
  */
 export const DATE = 'date'
 
 /**
- * @description format date
+ * @description 格式化格式
  * @type {String}
  */
 export const FORMART_DATE = 'YYYY-MM-DDTHH:mm:ssZ'
 
 /**
- * @descrition invalid date string
+ * @descrition 不可用表达
  * @type {String}
  */
 export const INVALID_DATE_STRING = 'Invalid Date'
 
 /**
- * @descriton regex parse date
+ * @descriton 解析日期正则表达式
  * @type {RegExp}
  */
 export const REGEX_PARSE = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/
 
 /**
- * @descrition regex format date
+ * @descrition 格式化日期正则表达式
  */
 export const REGEX_FORMAT = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g //

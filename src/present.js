@@ -1,61 +1,89 @@
 /**
- * @file Present.js  class file
+ * @file Present.js  类文件
  */
 import * as utils from './utils.js'
 import { globalLocales } from '../locale/index.js'
 import { INVALID_DATE_STRING } from './constant.js'
 
 /**
- * @class Present class
+ * @class Presentjs 类
  */
 export class Presentjs {
   /**
-   * @description  locale language
+   * @description  本地化语言
    * @member { String }  locale
    * @memberof Presentjs
    */
   $L
   /**
-   * @description  date
+   * @description  日期
    * @member { Date }  date
    * @memberof Presentjs
    */
   $P
-
   /**
-   * @description: constructor
+   * @constructor
+   * @description: 构造函数
+   * @memberof Presentjs
    * @param { Object } config
-   * @Constructor
+   *
    */
   constructor(config) {
     this.$L = utils.parseLocale(config.locale, null, true)
     console.log(this.$L)
     this.parse(config)
   }
-  // 解析
+  /**
+   * @function parse
+   * @description: 转换日期为Date 对象 并初始化
+   * @param {object} config
+   * @menmberof Presentjs
+   */
   parse(config) {
-    this.$p = utils.parseDate(config)
-    this.$x = config.x || {} //
-    this.init() //初始化
+    this.$P = utils.parseDate(config)
+    this.$x = config.x || {}
+    this.init()
   }
-  // init date object
+
+  /**
+   * @function init
+   * @description: chunk date into year, month, date, hour, minute, second, millisecond
+   * @memberof Presentjs
+   */
   init() {
-    const { $p } = this
-    this.$y = $p.getFullYear() //年份
-    this.$M = $p.getMonth() //月份
-    this.$D = $p.getDate() //日期
-    this.$W = $p.getDay() //星期
-    this.$H = $p.getHours() //小时
-    this.$m = $p.getMinutes() //分钟
-    this.$s = $p.getSeconds() //秒
-    this.$ms = $p.getMilliseconds() //毫秒
+    const { $P } = this
+    this.$y = $P.getFullYear() //year
+    this.$M = $P.getMonth() //month
+    this.$D = $P.getDate() //date
+    this.$W = $P.getDay() //week
+    this.$H = $P.getHours() //hour
+    this.$m = $P.getMinutes() //minute
+    this.$s = $P.getSeconds() //second
+    this.$ms = $P.getMilliseconds() //millisecond
   }
+
+  /**
+   * @function clone
+   * @description:克隆一个新的Presentjs对象
+   * @memberof Presentjs
+   * @returns { Presentjs }
+   */
   clone() {
-    return utils.wrapper(new Date(this.$p), this)
+    return utils.wrapper(new Date(this.$P), this)
   }
+  /**
+   * @function isValid
+   * @description: check if the date is valid
+   * @returns { Boolean }
+   */
   isValid() {
-    return !(this.$p.toString() === INVALID_DATE_STRING)
+    return !(this.$P.toString() === INVALID_DATE_STRING)
   }
+  /**
+   * @function $locale
+   * @description: get locale
+   * @returns {String}
+   */
   $locale() {
     return globalLocales[this.$L]
   }
